@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import org.jash.common.mvvm.BaseActivity
+import org.jash.common.utils.retrofit
 import org.jash.sports.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
@@ -13,12 +14,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.tv.text = "开始"
-        viewModel.progressLiveData.observe(this) {
-            progress(it)
-        }
-        viewModel.completeLiveData.observe(this) {
-            complete(it)
-        }
+//        viewModel.progressLiveData.observe(this) {
+//            progress(it)
+//        }
+//        viewModel.completeLiveData.observe(this) {
+//            complete(it)
+//        }
         viewModel.start()
     }
     fun progress(p:Int) {

@@ -13,6 +13,7 @@ import kotlin.reflect.KProperty1
 import kotlin.reflect.full.declaredFunctions
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.isSubclassOf
+import kotlin.reflect.full.isSuperclassOf
 import kotlin.reflect.jvm.isAccessible
 import kotlin.reflect.jvm.jvmErasure
 
@@ -31,7 +32,7 @@ open class BaseActivity<B:ViewDataBinding, VM:BaseViewModel>:AppCompatActivity()
         setContentView(binding.root)
         val map = this::class.declaredFunctions.filter { it.parameters.size == 2 }
             .associateBy { it.parameters[1].type }
-        viewModel::class.declaredMemberProperties.filter { LiveData::class.isSubclassOf(it.returnType.jvmErasure) }
+        viewModel::class.declaredMemberProperties.filter { LiveData::class.isSuperclassOf(it.returnType.jvmErasure) }
             .forEach {
                 it.isAccessible = true
                 val liveData = (it as KProperty1<VM, *>).get(viewModel) as LiveData<*>
