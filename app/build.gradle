@@ -36,8 +36,13 @@ android {
         buildConfig true
     }
 }
-
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 dependencies {
+    kapt 'com.alibaba:arouter-compiler:1.5.2'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

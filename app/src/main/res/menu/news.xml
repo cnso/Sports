@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_home" android:title="新闻" android:icon="@drawable/baseline_home_24" android:checked="true"/>
+    <item android:id="@+id/menu_video" android:title="视频" android:icon="@drawable/baseline_play_circle_24"/>
+    <item android:id="@null" android:title="@null" android:icon="@null" android:enabled="false"/>
+    <item android:id="@+id/menu_community" android:title="社区" android:icon="@drawable/baseline_report_24"/>
+    <item android:id="@+id/menu_mine" android:title="我的" android:icon="@drawable/baseline_self_improvement_24"/>
+</menu>

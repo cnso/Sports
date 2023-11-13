@@ -1,12 +1,12 @@
-package org.jash.sports
+package org.jash.sports.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
+import com.alibaba.android.arouter.launcher.ARouter
 import org.jash.common.mvvm.BaseActivity
-import org.jash.common.utils.retrofit
+import org.jash.common.utils.log
+import org.jash.sports.viewmodel.MainViewModel
 import org.jash.sports.databinding.ActivityMainBinding
+import org.jash.sports.entry.Category
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 //    val binding:ActivityMainBinding by lazy { DataBindingUtil.setContentView(this, R.layout.activity_main) }
@@ -21,11 +21,17 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 //            complete(it)
 //        }
         viewModel.start()
+        viewModel.loadCategory()
     }
     fun progress(p:Int) {
         binding.tv.text = "倒计时 $p 秒"
     }
     fun complete(s:String) {
         binding.tv.text = s
+        ARouter.getInstance().build("/news/home").navigation()
+    }
+    fun loaded(category: List<Category>) {
+        log("加载成功")
+        log("data: $category")
     }
 }
