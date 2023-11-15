@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="news"
+            type="org.jash.sports.entry.News" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="@{news.title}"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/image"
+            app:layout_constraintBottom_toTopOf="@id/looks"
+            />
+        <TextView
+            android:id="@+id/looks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text='@{"浏览量:" + news.looks}'
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintEnd_toEndOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:image_url="@{news.imgurl}"
+            app:layout_constraintStart_toEndOf="@id/title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

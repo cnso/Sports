@@ -40,7 +40,7 @@
                 android:layout_weight="1"/>
         </LinearLayout>
 
-        <androidx.appcompat.widget.SearchView
+        <com.google.android.material.search.SearchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/search"

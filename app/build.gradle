@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -44,7 +45,7 @@ kapt {
 dependencies {
     def room_version = "2.5.0"
 
-    kapt "androidx.room:room-compiler:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
     kapt 'com.alibaba:arouter-compiler:1.5.2'
 
     implementation 'androidx.core:core-ktx:1.9.0'
