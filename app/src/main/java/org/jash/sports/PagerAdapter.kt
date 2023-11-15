@@ -12,4 +12,14 @@ class PagerAdapter(fragment: Fragment, val data:MutableList<Category> = mutableL
 
     override fun createFragment(position: Int): Fragment = ARouter.getInstance().build("/news/category")
         .withString("name", data[position].name).navigation() as Fragment
+
+    operator fun plusAssign( categories: List<Category>) {
+//        notifyDataSetChanged()
+        val size = data.size
+        data += categories
+        notifyItemRangeInserted(size, categories.size)
+    }
+    fun getTitle(position: Int):String {
+        return data[position].name
+    }
 }

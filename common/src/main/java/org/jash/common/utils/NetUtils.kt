@@ -12,6 +12,7 @@ private val client by lazy {
 
 private val gson by lazy {
     GsonBuilder()
+        .setDateFormat("yyyy-MM-dd HH:mm:ss")
         .create()
 }
 
