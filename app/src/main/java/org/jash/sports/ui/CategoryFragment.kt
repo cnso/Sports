@@ -45,6 +45,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryViewModel
         adapter += page.records
     }
     override val defaultViewModelProviderFactory: ViewModelProvider.Factory
-        get() = viewModelFactory { initializer { CategoryViewModel(requireContext().database.getCategoryDao()) } }
+        get() = viewModelFactory { initializer { CategoryViewModel(requireContext().database.getNewsDao()) } }
 
 }

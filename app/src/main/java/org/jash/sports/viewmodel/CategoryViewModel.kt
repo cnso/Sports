@@ -6,12 +6,13 @@ import kotlinx.coroutines.launch
 import org.jash.common.mvvm.BaseViewModel
 import org.jash.common.utils.retrofit
 import org.jash.sports.dao.CategoryDao
+import org.jash.sports.dao.NewsDao
 import org.jash.sports.entry.Category
 import org.jash.sports.entry.News
 import org.jash.sports.entry.Page
 import org.jash.sports.net.Service
 
-class CategoryViewModel(val dao: CategoryDao):BaseViewModel() {
+class CategoryViewModel(val dao: NewsDao):BaseViewModel() {
 //    val categoryLiveData by lazy { MutableLiveData<Category>() }
 //    val allCategoryLiveData by lazy { MutableLiveData<List<Category>>() }
     val pageLiveData by lazy { MutableLiveData<Page<News>>() }
@@ -43,6 +44,7 @@ class CategoryViewModel(val dao: CategoryDao):BaseViewModel() {
                 val res = service.getNewsByPage(type, page, size)
                 if (res.code == 0) {
                     pageLiveData.postValue(res.data)
+                    dao.insert(*res.data.records.toTypedArray())
                 } else {
                     errorLiveData.postValue(res.msg)
                 }

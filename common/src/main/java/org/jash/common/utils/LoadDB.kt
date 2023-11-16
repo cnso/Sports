@@ -15,7 +15,9 @@ class LoadDB<DB:RoomDatabase>(val clazz:Class<DB>, val name:String):ReadOnlyProp
         }
         return synchronized(this) {
             if(value == null) {
-                value = Room.databaseBuilder(thisRef.applicationContext, clazz, name).build()
+                value = Room.databaseBuilder(thisRef.applicationContext, clazz, name)
+                    .fallbackToDestructiveMigration()
+                    .build()
             }
             value!!
         }
