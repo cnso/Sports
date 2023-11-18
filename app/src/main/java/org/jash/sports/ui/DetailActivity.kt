@@ -28,13 +28,6 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
 
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
-        android.R.id.home -> {
-            finish()
-            true
-        }
-        else -> super.onOptionsItemSelected(item)
-    }
     fun loaded(news:News) {
         binding.news = news
         title = news.title

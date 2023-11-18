@@ -2,6 +2,7 @@ package org.jash.common.mvvm
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
@@ -43,6 +44,14 @@ open class BaseActivity<B:ViewDataBinding, VM:BaseViewModel>:AppCompatActivity()
         viewModel.errorLiveData.observe(this) {
             error(it)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
+        android.R.id.home -> {
+            finish()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
     open fun error(msg:String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()

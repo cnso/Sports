@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import org.jash.common.mvvm.BaseActivity
+import org.jash.common.utils.token
 import org.jash.sports.R
 import org.jash.sports.databinding.ActivityNewsBinding
 import org.jash.sports.viewmodel.NewsViewModel
@@ -23,6 +24,10 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>() {
             .replace(R.id.content, ARouter.getInstance().build("/news/news").navigation() as Fragment)
             .commit()
         binding.navigation.setOnItemSelectedListener {
+            if (it.itemId == R.id.menu_mine && token == null) {
+                ARouter.getInstance().build("/news/login").navigation()
+                return@setOnItemSelectedListener false
+            }
             supportFragmentManager.beginTransaction()
                 .replace(R.id.content, ARouter.getInstance().build(when(it.itemId) {
                     R.id.menu_video -> "/news/video"
