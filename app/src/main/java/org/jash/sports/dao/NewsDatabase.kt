@@ -8,7 +8,7 @@ import org.jash.common.utils.TypeConvert
 import org.jash.sports.entry.Category
 import org.jash.sports.entry.News
 
-@Database(entities = [Category::class, News::class], version = 2)
+@Database(entities = [Category::class, News::class], version = 3)
 @TypeConverters(TypeConvert::class)
 abstract class NewsDatabase:RoomDatabase() {
     abstract fun getCategoryDao():CategoryDao

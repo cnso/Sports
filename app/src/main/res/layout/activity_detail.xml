@@ -24,6 +24,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/scroll"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,10 +39,41 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:text="@{news.content}"/>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_behavior="org.jash.common.utils.MyBehavior"
+            android:gravity="center_vertical"
+            app:layout_anchor="@id/scroll"
+            app:layout_anchorGravity="bottom|center_horizontal">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/comment_text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:imeOptions="actionSend"
+                />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/collect"
+                android:button="@drawable/collect"
+                android:text='@{news.collects + ""}'/>
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/baseline_comment_24"
+                android:text='@{news.comments + ""}'
+                />
+        </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

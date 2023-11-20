@@ -33,8 +33,11 @@ class RegistryActivity : BaseActivity<ActivityRegistryBinding, RegistryViewModel
         binding.registry.setOnClickListener {
             viewModel.registry(user)
         }
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
     fun registried(flag:Boolean) {
-
+        //关闭任务栈
+        finishAffinity()
     }
 }

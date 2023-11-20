@@ -29,6 +29,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     fun complete(s:String) {
         binding.tv.text = s
         ARouter.getInstance().build("/news/home").navigation()
+        finish()
     }
     fun loaded(category: List<Category>) {
         log("加载成功")
